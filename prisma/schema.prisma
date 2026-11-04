@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  GESTOR
+}
+
+enum Category {
+  VARONES
+  DAMAS
+}
+
+enum Series {
+  A
+  B
+}
+
+enum Status {
+  INSCRITO
+  PENDIENTE
+  RETIRADO
+}
+
+model User {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  passwordHash String
+  role         Role     @default(GESTOR)
+  createdAt    DateTime @default(now())
+  teams        Team[]
+}
+
+model Team {
+  id          String   @id @default(cuid())
+  name        String
+  grade       String
+  category    Category
+  series      Series
+  status      Status   @default(PENDIENTE)
+  createdBy   User     @relation(fields: [createdById], references: [id])
+  createdById String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([name, category, series])
+}
