@@ -92,7 +92,7 @@ export default function DashboardClient({ initialTeams, user }: DashboardClientP
           </h3>
           <div className="w-14 h-14 relative mx-8">
             <Image
-              src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=escudo%20colegio%20las%20rosas%20emblem%20logo&image_size=square"
+              src="/logo.png"
               alt="Escudo"
               fill
               className="object-contain opacity-20 grayscale"

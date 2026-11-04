@@ -20,7 +20,7 @@ export default function Header({ user, onLoginClick, onLogoutClick, onAddManager
       <div className="flex items-center gap-4">
         <div className="relative w-12 h-12">
            <Image
-            src="https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=escudo%20colegio%20las%20rosas%20emblem%20logo&image_size=square"
+            src="/logo.png"
             alt="U.E.T.H. LAS ROSAS"
             fill
             className="object-contain"
